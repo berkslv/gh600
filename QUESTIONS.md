@@ -10,11 +10,11 @@ Bir yazılım geliştirme ekibi, repolarında GitHub Copilot kullanımını geni
 Aşağıdakilerden hangisi bir yapay zeka sisteminin GitHub üzerinde **ajan (agent)** olarak davrandığının en açık göstergesidir?
 
 A) Geliştiriciye IDE chat penceresinde karmaşık bir fonksiyon için kod önerisi sunması  
-B) Bir güvenlik açığı bildirimini inceleyerek yeni bir dal (branch) açması, bağımlılığı güncellemesi ve doğrulama kanıtlarıyla birlikte bir Pull Request oluşturması  
+B) Bir Pull Request içeriğindeki kod değişikliklerini inceleyip geliştirici için özet metin üretmesi  
 C) Terminalde çalıştırılan bir komutun hata çıktısını açıklayıp geliştiriciye dokümantasyon bağlantıları vermesi  
-D) Bir Pull Request içeriğindeki kod değişikliklerini inceleyip geliştirici için özet metin üretmesi  
+D) Bir güvenlik açığı bildirimini inceleyerek yeni bir dal (branch) açması, bağımlılığı güncellemesi ve doğrulama kanıtlarıyla birlikte bir Pull Request oluşturması  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
   **Açıklama:** Asistanlar (Assistants) reaktiftir; öneri sunar, açıklar veya özetler fakat depo üzerinde bağımsız bir işlem yürütmez. Ajanlar (Agents) ise hedefe yöneliktir (goal-driven); bir hedefi yorumlar, ara adımları belirler, araçları (APIs, workflows) kullanır ve branch, commit ve PR gibi kalıcı çıktılar üretir.
 
 ---
@@ -40,11 +40,11 @@ Bir ajan tarafından açılan ve CI kontrollerinden başarıyla geçen bir Pull 
 GitHub'ın katılımcı ve sorumluluk yönetişim modeline göre, bu olaydaki nihai hesap verebilirlik (accountability) kime aittir?
 
 A) Ajanı geliştiren üçüncü taraf model sağlayıcısına  
-B) Görevi tanımlayan, izinleri belirleyen, kontrolleri kurgulayan ve PR'ı merge eden insan mühendislik ekibine  
-C) GitHub Actions runner altyapısına  
+B) GitHub Actions runner altyapısına  
+C) Görevi tanımlayan, izinleri belirleyen, kontrolleri kurgulayan ve PR'ı merge eden insan mühendislik ekibine  
 D) Yalnızca PR'ı oluşturan GitHub App bot kimliğine  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** Yürütme (execution) ajana devredilebilir ancak sorumluluk (accountability) sisteme devredilemez. Görevi veren, izin sınırlarını çizen, kalite kapılarını belirleyen ve PR'ı onaylayarak birleştiren insan ekipleri nihai olarak sorumludur.
 
 ---
@@ -55,11 +55,11 @@ Bir kod inceleme uzmanı, bir ajanın açtığı PR'ı incelerken PR açıklamas
 Bu durum GH-600 müfredatında hangi anti-pattern olarak adlandırılır?
 
 A) Blind trust in automation  
-B) Planless execution (Plansız Yürütme)  
+B) Over-permissioned agent  
 C) Context drift  
-D) Over-permissioned agent  
+D) Planless execution (Plansız Yürütme)  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** Ajanın incelenebilir yapılandırılmış bir yaklaşım sunmadan doğrudan kod değişikliklerine girişmesi "Planless execution" anti-pattern'idir. İnceleyicilerin amacı anlamasını imkansızlaştırır.
 
 ---
@@ -69,10 +69,10 @@ Katılımcı Modeli (Contributor Model) ilkelerine göre bir ekip, ajan tarafın
 
 A) Yazar bir yapay zeka olduğu için otomatik olarak reddedilmeli veya baştan şüpheyle yaklaşılmalıdır.  
 B) CI testleri başarılı olduğu sürece kod satırları incelenmeden otomatik merge edilmelidir.  
-C) Değişiklik, yazarın kimliğinden bağımsız olarak standart bir insan mühendislik katkısı gibi; kapsamı, niyetin karşılanması, zorunlu kontrolleri ve CODEOWNERS onayları açısından değerlendirilmelidir.  
-D) Ajan PR'ları yalnızca haftalık toplu (batch) inceleme toplantılarında incelenmelidir.  
+C) Ajan PR'ları yalnızca haftalık toplu (batch) inceleme toplantılarında incelenmelidir.  
+D) Değişiklik, yazarın kimliğinden bağımsız olarak standart bir insan mühendislik katkısı gibi; kapsamı, niyetin karşılanması, zorunlu kontrolleri ve CODEOWNERS onayları açısından değerlendirilmelidir.  
 
-> **Doğru Cevap:** **C**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** Contributor Model iki uç hatayı engeller: aşırı şüphecilik ve otomasyona körü körüne güven. Ajan çıktısı, deponun "Definition of Done" kriterlerine göre tıpkı standart bir geliştirici katkısı gibi denetlenmelidir.
 
 ---
@@ -99,11 +99,11 @@ Hassas bir depoda `/.github/workflows/` dizinindeki YAML dosyalarında yapılaca
 Bu gereksinimi GitHub-native olarak en doğrudan karşılayan mekanizma aşağıdakilerden hangisidir?
 
 A) GitHub Issues etiketleri  
-B) CODEOWNERS dosyası ve Ruleset üzerinde "Require review from Code Owners" kuralının etkinleştirilmesi  
-C) Depo ana sayfasındaki README.md uyarı metni  
+B) Depo ana sayfasındaki README.md uyarı metni  
+C) CODEOWNERS dosyası ve Ruleset üzerinde "Require review from Code Owners" kuralının etkinleştirilmesi  
 D) İş akışına `continue-on-error: true` eklenmesi  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** CODEOWNERS dosyası, dosya yollarına göre ilgili ekipleri otomatik olarak incelemeci atar. Ruleset/Branch Protection ile "Require review from Code Owners" açıldığında, ilgili ekibin onayı olmadan PR merge edilemez.
 
 ---
@@ -112,11 +112,11 @@ D) İş akışına `continue-on-error: true` eklenmesi
 Aşağıdakilerden hangisi GitHub'ın bir ajan sistemi için "System of Record (Kayıt Sistemi)" olma fonksiyonunu en iyi açıklar?
 
 A) Tüm kod derlemelerini bulutta en yüksek işlemci gücüyle çalıştırması  
-B) Ajanın niyetini, planlarını, dal geçmişini, PR tartışmalarını, inceleme kararlarını ve iş akışı kanıtlarını kalıcı ve denetlenebilir biçimde saklaması  
+B) Tüm üçüncü taraf API'lerin kimlik bilgilerini şifresiz olarak önbelleğe alması  
 C) Kodlama hatalarını yapay zeka modellerine ihtiyaç duymadan otomatik olarak düzeltmesi  
-D) Tüm üçüncü taraf API'lerin kimlik bilgilerini şifresiz olarak önbelleğe alması  
+D) Ajanın niyetini, planlarını, dal geçmişini, PR tartışmalarını, inceleme kararlarını ve iş akışı kanıtlarını kalıcı ve denetlenebilir biçimde saklaması  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** GitHub, hem kalkınma sürecini yürütür hem de ajan davranışlarının geriye dönük denetlenebilmesi (post-hoc analysis) için tüm niyet, plan, commit, PR ve workflow kanıtlarını saklayan resmi kayıt sistemidir.
 
 ---
@@ -127,11 +127,11 @@ Bir ekip bağımlılık açığı giderme (dependency remediation) ajanını dev
 Bu tasarıma göre ajanın görevi ne zaman tamamlanmış sayılır?
 
 A) Bağımlılık paketini güncelleyip doğrudan `main` dalına push yaptığında ve prodüksiyona çıktığında  
-B) İlgili bağımlılığı ve lockfile dosyasını yeni bir dalda güncelleyip yapılandırılmış plan içeren bir PR açtığında  
+B) Şirketin bulut ortamındaki Kubernetes cluster'ını yeniden başlattığında  
 C) Kod incelemelerini kendi kendine onaylayıp merge ettiğinde  
-D) Şirketin bulut ortamındaki Kubernetes cluster'ını yeniden başlattığında  
+D) İlgili bağımlılığı ve lockfile dosyasını yeni bir dalda güncelleyip yapılandırılmış plan içeren bir PR açtığında  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** Implementation ile sınırlandırılmış bir ajan dalı oluşturur, dosyaları günceller ve PR açar. Doğrulama (Validation) CI sistemine, kabul ve merge işlemi ise insan inceleyicilere ve politikalara aittir.
 
 ---
@@ -142,11 +142,11 @@ Kritik bir ödeme altyapısı deposunda ajanların kod geliştirmeden önce mutl
 Bu yaklaşımın operasyonel işleyişi nasıldır?
 
 A) Ajan tüm kodları yazar, PR açar ve aynı anda prodüksiyona dağıtır.  
-B) Ajan önce yalnızca plan içeren bir PR açar (kod değişikliği içermez); plan insanlar tarafından tartışılıp onaylandıktan sonra ajan uygulama adımlarına geçer.  
-C) Ajan kodları doğrudan main dalına gönderir ve PR açıklamasına plan yazar.  
+B) Ajan kodları doğrudan main dalına gönderir ve PR açıklamasına plan yazar.  
+C) Ajan önce yalnızca plan içeren bir PR açar (kod değişikliği içermez); plan insanlar tarafından tartışılıp onaylandıktan sonra ajan uygulama adımlarına geçer.  
 D) Geliştiriciler planı yazar, ajan ise sadece linter çalıştırır.  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** Plan-first modelinde niyet (intent) ile yürütme (execution) birbirinden ayrılır. Kod yazılmadan önce niyet doğrulanır; böylece risk erken aşamada sınırlandırılır.
 
 ---
@@ -156,12 +156,12 @@ Bir repoda ajanların açtığı PR'larda `.github/pull_request_template.md` şa
 
 Bu kuralı bağlayıcı bir sistem güvencesine dönüştürmek için ne yapılmalıdır?
 
-A) PR şablonunun içine "Lütfen plan ekleyin" şeklinde bir yorum satırı yazılmalıdır.  
+A) Plan dosyasının veya PR açıklamasındaki plan bloğunun varlığını kontrol eden bir GitHub Actions iş akışı yazılmalı ve bu iş akışı repository ruleset / branch protection altında "Required Status Check" yapılmalıdır.  
 B) Geliştiricilere e-posta gönderilmelidir.  
-C) Plan dosyasının veya PR açıklamasındaki plan bloğunun varlığını kontrol eden bir GitHub Actions iş akışı yazılmalı ve bu iş akışı repository ruleset / branch protection altında "Required Status Check" yapılmalıdır.  
+C) PR şablonunun içine "Lütfen plan ekleyin" şeklinde bir yorum satırı yazılmalıdır.  
 D) CODEOWNERS dosyasına ajan botunun adı eklenmelidir.  
 
-> **Doğru Cevap:** **C**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Yalnızca şablon koymak tavsiye niteliğindedir. Bir kuralın sistemsel olarak atlanamaz olmasını sağlamak için bir doğrulama iş akışı yazılmalı ve bu iş akışı "Required Status Check" olarak işaretlenmelidir.
 
 ---
@@ -172,11 +172,11 @@ Ajanik bir iş akışında `plan` işi (job) tarafından üretilen bir metin ç�
 GitHub Actions mimarisinde işler arası (cross-job) veri paylaşımını sağlamak için hangi mekanizma kullanılmalıdır?
 
 A) Step düzeyinde tanımlanan yerel Linux environment değişkenleri  
-B) `GITHUB_OUTPUT` dosyasına yazılan ve iş düzeyinde `outputs` bloğu ile dışa aktarılan değerler ve bağımlı işte `needs.<job_id>.outputs.<output_name>` kullanımı  
-C) Veriyi depodaki `README.md` dosyasına commit atmak  
+B) Veriyi depodaki `README.md` dosyasına commit atmak  
+C) `GITHUB_OUTPUT` dosyasına yazılan ve iş düzeyinde `outputs` bloğu ile dışa aktarılan değerler ve bağımlı işte `needs.<job_id>.outputs.<output_name>` kullanımı  
 D) GitHub Issues API üzerinden yorum bırakmak  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** İşler arası yapılandırılmış veri aktarımı job-level `outputs` ve `needs` sözdizimi ile gerçekleştirilir. Step output'ları sadece aynı job içindeki adımlar arasında geçerlidir; `env` ise çalışma anı yapılandırması içindir.
 
 ---
@@ -204,12 +204,12 @@ Bu iş akışı manuel olarak (`workflow_dispatch`) tetiklendiğinde `Comment on
 
 Bunu engellemek için hangi "Defensive Gating" koşulu eklenmelidir?
 
-A) Job düzeyinde: `if: github.event_name == 'pull_request'`  
+A) Permissions düzeyinde: `contents: none`  
 B) Step düzeyinde: `continue-on-error: true`  
 C) Trigger düzeyinde: `branches-ignore: [main]`  
-D) Permissions düzeyinde: `contents: none`  
+D) Job düzeyinde: `if: github.event_name == 'pull_request'`  
 
-> **Doğru Cevap:** **A**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** Defensive gating, iş akışının PR'a özgü adımlarının yalnızca gerçek bir PR olayıyla tetiklendiğinde çalışmasını güvence altına almak için `if: github.event_name == 'pull_request'` koşulunun kullanılmasıdır.
 
 ---
@@ -220,11 +220,11 @@ Bir güvenlik ajanı, CVE açığı bulunan bir npm paketini güncellemekle gör
 Bu durum ajanik sistem tasarımında hangi temel prensibi ihlal eder?
 
 A) En düşük yetki ilkesini  
-B) Başarı kriterlerinin sadece "CI passed" olarak değil, asıl amaca yönelik (vulnerability resolved) tanımlanması gerekliliğini  
-C) Branch isolation kuralını  
+B) Branch isolation kuralını  
+C) Başarı kriterlerinin sadece "CI passed" olarak değil, asıl amaca yönelik (vulnerability resolved) tanımlanması gerekliliğini  
 D) Concurrency kontrollerini  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** "CI passed" gereklidir fakat her zaman yeterli değildir. Başarı kriterleri görevin gerçek hedefini (güvenlik açığının tamamen kapanması) doğrulamalıdır; salt testlerin yeşil olması açığın kapandığını kanıtlamaz.
 
 ---
@@ -233,11 +233,11 @@ D) Concurrency kontrollerini
 GitHub Copilot ajanlarında `.github/hooks/` dizini altında tanımlanan bir `preToolUse` kancasının (hook) temel amacı nedir?
 
 A) Ajanın her işleminden sonra ekrana başarı mesajı yazdırmak  
-B) Ajan tehlikeli bir araç veya kabuk komutu (örn. `rm -rf /` veya `sudo`) çalıştırmadan önce araya girerek işlemi denetlemek ve gerekirse yürütmeyi engellemek  
+B) Kullanıcının GitHub parolasını sıfırlamak  
 C) GitHub Actions runner'larını otomatik olarak kapatmak  
-D) Kullanıcının GitHub parolasını sıfırlamak  
+D) Ajan tehlikeli bir araç veya kabuk komutu (örn. `rm -rf /` veya `sudo`) çalıştırmadan önce araya girerek işlemi denetlemek ve gerekirse yürütmeyi engellemek  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** `preToolUse` hook'ları, modelin mantığına veya prompt talimatlarına güvenmek yerine, araç çalıştırılmadan hemen önce deterministik kurallarla tehlikeli komutları bloke eden teknik korkuluklardır (technical guardrails).
 
 ---
@@ -245,12 +245,12 @@ D) Kullanıcının GitHub parolasını sıfırlamak
 ### Soru 16 (Tek Seçim - Context Seçimi)
 Bir GitHub Actions iş akışında, iş akışını tetikleyen olayın türünü ve referans dalını belirlemek için hangi context kullanılmalıdır?
 
-A) `vars.*`  
+A) `github.*`  
 B) `env.*`  
-C) `github.*`  
+C) `vars.*`  
 D) `secrets.*`  
 
-> **Doğru Cevap:** **C**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Olay meta verileri (`event_name`, `ref`, `actor` vb.) `github.*` context'i altındadır. `vars.*` yapılandırma değişkenleri, `env.*` çalışma ortamı değişkenleri, `secrets.*` ise şifreli değerler içindir.
 
 ---
@@ -260,12 +260,12 @@ Ajanik iş akışlarında oluşturulan test sonuçları, plan dosyaları ve tara
 
 Bunun için önerilen GitHub Actions deseni nedir?
 
-A) Çıktıları geçici olarak genel bir web sitesine POST etmek  
-B) Çıktıyı üreten işte `actions/upload-artifact@v4` kullanmak, tüketen veya inceleyen tarafta ise `actions/download-artifact@v4` ile indirmek  
+A) Çıktıyı üreten işte `actions/upload-artifact@v4` kullanmak, tüketen veya inceleyen tarafta ise `actions/download-artifact@v4` ile indirmek  
+B) Çıktıları geçici olarak genel bir web sitesine POST etmek  
 C) Dosyaları `main` dalına doğrudan push etmek  
 D) Verileri base64 formatına çevirip commit mesajına eklemek  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Artifact'lar, oluşturulan dosyaların kalıcı ve incelenebilir olmasını sağlar; depoya gereksiz ikili veya geçici dosyalar commit edilmesini önler.
 
 ---
@@ -287,11 +287,11 @@ D) GitHub Secrets yerine şifre saklayan bir veritabanıdır.
 Bir organizasyon, kendi özel MCP Registry (Kayıt Defteri) servisini geliştirmektedir. Sistemin GitHub Copilot ile tam uyumlu çalışabilmesi için **MCP Registry v0.1** spesifikasyonuna göre aşağıdaki HTTP GET uç noktalarından hangisini sağlaması **zorunludur**?
 
 A) `GET /api/v2/tools/all`  
-B) `GET /v0.1/servers`  
+B) `GET /copilot/license/check`  
 C) `GET /mcp/download/binary`  
-D) `GET /copilot/license/check`  
+D) `GET /v0.1/servers`  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** MCP Registry v0.1 spesifikasyonuna göre zorunlu uç noktalar: `GET /v0.1/servers`, `GET /v0.1/servers/{serverName}/versions/latest` ve `GET /v0.1/servers/{serverName}/versions/{version}` şeklindedir.
 
 ---
@@ -302,11 +302,11 @@ Bir kurumsal müşteri, MCP sunucularını yönetmek için **Azure API Center** 
 GitHub Enterprise AI Controls üzerinde Azure API Center yapılandırılırken aşağıdaki kurallardan hangisine dikkat edilmelidir?
 
 A) Kayıt defteri URL alanına tam endpoint olarak `/v0.1/servers` yolu eklenmelidir.  
-B) Kayıt defteri URL alanına yalnızca taban URL (base URL) girilmeli (`/v0.1/servers` eklenmemeli) ve anonim erişim etkinleştirilmelidir.  
-C) Azure API Center yalnızca SSH protokolü üzerinden bağlanabilir.  
+B) Azure API Center yalnızca SSH protokolü üzerinden bağlanabilir.  
+C) Kayıt defteri URL alanına yalnızca taban URL (base URL) girilmeli (`/v0.1/servers` eklenmemeli) ve anonim erişim etkinleştirilmelidir.  
 D) Azure API Center kullanıldığında Copilot CLI devre dışı bırakılmalıdır.  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** Dokümantasyona göre Azure API Center kullanıldığında temel (base) URL girilir (`/v0.1/servers` yolu eklenmez) ve Copilot'un listeyi çekebilmesi için anonim erişim açık olmalıdır.
 
 ---
@@ -329,12 +329,12 @@ D) "Registry only" modunda yerel sunucuların kullanımı teknik olarak tamamen 
 ### Soru 22 (Tek Seçim - GitHub Agentic Workflows / gh-aw)
 GitHub Agentic Workflows (`gh-aw`) mimarisinde iş akışının yapısı nasıldır?
 
-A) Yalnızca C# ile yazılmış binary dosyalardır.  
-B) YAML frontmatter (tetikleyiciler, izinler, safe-outputs, tools) ve Markdown gövdesi (doğal dilde tanımlanan iş niyeti) içerir; derlenerek bir lock file oluşturur.  
+A) YAML frontmatter (tetikleyiciler, izinler, safe-outputs, tools) ve Markdown gövdesi (doğal dilde tanımlanan iş niyeti) içerir; derlenerek bir lock file oluşturur.  
+B) Yalnızca C# ile yazılmış binary dosyalardır.  
 C) Geleneksel Jenkins pipeline betikleridir.  
 D) LLM modellerinin kaynak kodunu barındıran depolardır.  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** GitHub Agentic Workflows, frontmatter ile korkulukları ve izinleri belirler; Markdown ile amacı doğal dilde anlatır ve GitHub Actions üzerinde çalıştırılmak üzere derlenmiş bir lock dosyası üretir.
 
 ---
@@ -342,12 +342,12 @@ D) LLM modellerinin kaynak kodunu barındıran depolardır.
 ### Soru 23 (Tek Seçim - Safe Outputs)
 GitHub Agentic Workflows içinde yer alan **safe-outputs** özelliğinin temel güvenlik işlevi nedir?
 
-A) Ajanın doğrudan depoya kontrolsüz yazma işlemi yapmasını engeller; ajan yalnızca bir çıktı önerir, onaylanmış ayrı bir güvenli adım bu çıktıyı kontrollü şekilde uygular.  
-B) Veritabanı yedeklerini harici diske kopyalar.  
+A) Veritabanı yedeklerini harici diske kopyalar.  
+B) Ajanın doğrudan depoya kontrolsüz yazma işlemi yapmasını engeller; ajan yalnızca bir çıktı önerir, onaylanmış ayrı bir güvenli adım bu çıktıyı kontrollü şekilde uygular.  
 C) Ajanın ekran görüntüsü almasını sağlar.  
 D) Runner üzerindeki tüm ortam değişkenlerini siler.  
 
-> **Doğru Cevap:** **A**  
+> **Doğru Cevap:** **B**  
 > **Açıklama:** Safe-outputs, "reasoning" (akıl yürütme) ile "execution" (yürütme) arasındaki sınır kapısıdır. Ajan içeriği üretir, ancak write yetkisine sahip ayrı bir gated step bu çıktıyı güvenlik taramasından geçirerek uygular.
 
 ---
@@ -368,12 +368,12 @@ tools:
 
 Bu özel ajan (custom agent) hakkında aşağıdakilerden hangisi **doğrudur**?
 
-A) Bu ajan yeni bir git dalı oluşturma ve otomatik PR açma yetkisine sahiptir.  
-B) Ajan yalnızca JS ve `src/auth/` dosyalarına odaklanacak ve yalnızca dosya okuma/arama araçlarını kullanabilecektir; dal oluşturma ve PR davranışları ise ajanın kendisi tarafından değil, onu yürüten sistem tarafından belirlenir.  
+A) Ajan yalnızca JS ve `src/auth/` dosyalarına odaklanacak ve yalnızca dosya okuma/arama araçlarını kullanabilecektir; dal oluşturma ve PR davranışları ise ajanın kendisi tarafından değil, onu yürüten sistem tarafından belirlenir.  
+B) Bu ajan yeni bir git dalı oluşturma ve otomatik PR açma yetkisine sahiptir.  
 C) Ajan depodaki tüm dosyaları silebilir.  
 D) `applyTo` alanı ajanın yetkisini değil, GitHub Actions runner işletim sistemini belirler.  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Özel ajanlar `applyTo` ile dosya kapsamını, `tools` ile araç yetkisini sınırlar. Ancak dal oluşturma veya PR açma gibi yürütme sınırları ajanın dosyasından değil, yürütme bağlamından (platform/orchestrator) kontrol edilir.
 
 ---
@@ -412,17 +412,17 @@ permissions: none
 ### Soru 26 (Tek Seçim - Runner Üzerinde Copilot CLI Çağrısı)
 Bir CI iş akışı adımında Copilot CLI kullanılarak otomatik özetleme yaptırılacaktır. Kullanıcı etkileşiminin beklenmemesi ve kimlik doğrulamasının sağlanması için adım nasıl yapılandırılmalıdır?
 
-A) `run: copilot chat`  
-B)
+A)
 ```yaml
 env:
   COPILOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 run: npx @github/copilot-cli -p "Summarize changes" --no-ask-user
 ```
+B) `run: copilot chat`  
 C) `run: git push origin main --force`  
 D) `run: ssh root@copilot-server`  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Non-interactive CI ortamında `--no-ask-user` bayrağı ile prompt gönderilir ve `COPILOT_GITHUB_TOKEN` ortam değişkeni üzerinden token enjekte edilir.
 
 ---
@@ -432,12 +432,12 @@ Aynı depoda hem bir bağımlılık güncelleme ajanı (Dependency Agent) hem de
 
 Bu iki ajanın sürekli çakışan PR'lar üretmesini engellemek için mimari olarak yapılması gereken en temel işlem nedir?
 
-A) Ajanların her ikisine de tüm repoda tam yazma yetkisi vermek  
-B) Kapsam sınırları (scope boundaries) tanımlamak: Dependency ajanını sadece manifest ve lockfile dosyalarıyla, Refactoring ajanını ise sadece `src/` altındaki kodlarla sınırlandırmak  
+A) Kapsam sınırları (scope boundaries) tanımlamak: Dependency ajanını sadece manifest ve lockfile dosyalarıyla, Refactoring ajanını ise sadece `src/` altındaki kodlarla sınırlandırmak  
+B) Ajanların her ikisine de tüm repoda tam yazma yetkisi vermek  
 C) Ajanları aynı dal (branch) üzerinde sırayla çalıştırmak  
 D) PR incelemelerini devre dışı bırakmak  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Çoklu ajan mimarisinde istikrar, kapsam sınırlarının (scope boundaries) net çizilmesiyle başlar. Ajanların dokunduğu dosya yolları ayrıştırıldığında gereksiz çakışmalar önlenir.
 
 ---
@@ -487,13 +487,13 @@ concurrency:
 B)
 ```yaml
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: global
   cancel-in-progress: true
 ```
 C)
 ```yaml
 concurrency:
-  group: global
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 ```
 D)
@@ -502,7 +502,7 @@ concurrency:
   group: ${{ github.actor }}
 ```
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** `group: ${{ github.workflow }}-${{ github.ref }}` ifadesi, eşzamanlılığı hem iş akışı hem de dal bazında izole eder. Sadece `${{ github.ref }}` kullanılırsa aynı daldaki ilgisiz iş akışları da birbirini iptal edebilir. `cancel-in-progress: true` ise eski çalıştırmayı sonlandırır.
 
 ---
@@ -528,11 +528,11 @@ D) GitHub Agentic Workflows
 GH-600 operasyonel kurallarına göre bu aşamada sistem nasıl davranmalıdır?
 
 A) Ajanlar sonsuza kadar rebase denemeye devam etmelidir.  
-B) İlk rebase atan ajanın PR'ı otomatik merge edilmeli, diğeri silinmelidir.  
-C) Otomasyon durdurulmalı; neyin çakıştığını, nelerin denendiğini ve olası seçenekleri özetleyen bir raporla insan inceleyicisine eskalasyon yapılmalıdır.  
+B) Otomasyon durdurulmalı; neyin çakıştığını, nelerin denendiğini ve olası seçenekleri özetleyen bir raporla insan inceleyicisine eskalasyon yapılmalıdır.  
+C) İlk rebase atan ajanın PR'ı otomatik merge edilmeli, diğeri silinmelidir.  
 D) Her iki PR da kalıcı olarak silinmeli ve repo kilitlenmelidir.  
 
-> **Doğru Cevap:** **C**  
+> **Doğru Cevap:** **B**  
 > **Açıklama:** İstikrarlı sistemlerde eskalasyon kuralı: Aynı hata veya çakışma 2 kez tekrarlandığında otomatik deneme durdurulur ve insana yapılandırılmış kanıtlarla eskalasyon yapılır. "İlk merge olan kazanır" yaklaşımı anti-pattern'dir.
 
 ---
@@ -545,18 +545,18 @@ Bir planlama ajanı (`planner.agent.md`), işini bitirdikten sonra görevi otoma
 A)
 ```yaml
 ---
-agents: [implementer]
-handoffs:
-  - label: Start Implementation
-    agent: implementer
-    send: true
+tools: [implementer]
+auto-run: true
 ---
 ```
 B)
 ```yaml
 ---
-tools: [implementer]
-auto-run: true
+agents: [implementer]
+handoffs:
+  - label: Start Implementation
+    agent: implementer
+    send: true
 ---
 ```
 C)
@@ -572,7 +572,7 @@ forward-to: implementer.exe
 ---
 ```
 
-> **Doğru Cevap:** **A**  
+> **Doğru Cevap:** **B**  
 > **Açıklama:** Ajan dosyasında `agents:` listesinde izin verilen alt ajan belirtilir ve `handoffs:` bloğu altında ilgili ajana geçiş ve otomatik gönderme (`send: true`) tanımlanır.
 
 ---
@@ -598,11 +598,11 @@ Reponuzda tüm dallara push edilen commit'lerin GPG ile imzalanmış olmasını 
 İnsanlar için imzalama kuralını korurken ajanın çalışabilmesini sağlamak için ne yapılmalıdır?
 
 A) İmzalı commit zorunluluğu kuralı tüm repoda tamamen silinmelidir.  
-B) Deponun Ruleset ayarlarında "GitHub Copilot" ilgili kural için bir bypass aktörü (bypass actor) olarak eklenmelidir.  
+B) Ajanın doğrudan `main` dalına push yapmasına izin verilmelidir.  
 C) Ajanın her commit'i için sahte bir imza üretilmelidir.  
-D) Ajanın doğrudan `main` dalına push yapmasına izin verilmelidir.  
+D) Deponun Ruleset ayarlarında "GitHub Copilot" ilgili kural için bir bypass aktörü (bypass actor) olarak eklenmelidir.  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** Kurumsal repository ruleset'lerinde "GitHub Copilot", belirli kurallar (örneğin signed commits) için bypass aktörü olarak tanımlanabilir. Bu sayede otomasyon dalları engellenmezken insan katkıcılar denetlenmeye devam eder.
 
 ---
@@ -627,12 +627,12 @@ Ajanik sistemlerde üç temel bellek türü bulunur: Kısa Vadeli, Uzun Vadeli v
 
 Bir görevin kabul kriterleri, gereksinimleri ve değişmez kuralları için **en güvenilir "Source of Truth" (Doğruluk Kaynağı)** olarak kabul edilen bellek katmanı ve GitHub karşılığı hangisidir?
 
-A) Kısa vadeli bellek - Modelin o anki prompt geçmişi  
-B) Harici bellek - GitHub Issue ve Pull Request açıklamaları gibi kalıcı depo yapıtları  
+A) Harici bellek - GitHub Issue ve Pull Request açıklamaları gibi kalıcı depo yapıtları  
+B) Kısa vadeli bellek - Modelin o anki prompt geçmişi  
 C) Uzun vadeli bellek - Tarayıcı çerezleri  
 D) Harici bellek - Geçici Actions runner konsol logları  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Harici bellek (External memory), oturumlardan bağımsız yaşayan, denetlenebilir ve kalıcı GitHub nesneleridir (Issues, PRs, instructions). Gereksinimler issue'da, kararlar PR'da tutulur ve asıl kaynak burasıdır.
 
 ---
@@ -641,11 +641,11 @@ D) Harici bellek - Geçici Actions runner konsol logları
 Ajanik bir iş akışında "Context Drift" (Bağlam Kayması) kavramı neyi ifade eder?
 
 A) Runner'ın internet bağlantısının anlık olarak kopmasını  
-B) Ajanın yaptığı değişikliklerin zamanla orijinal görev hedefinden, kabul kriterlerinden veya önceki mimari kararlardan sapması durumunu  
+B) Ajanın Python yerine JavaScript kodu yazmasını  
 C) 90 gün sonra Actions loglarının silinmesini  
-D) Ajanın Python yerine JavaScript kodu yazmasını  
+D) Ajanın yaptığı değişikliklerin zamanla orijinal görev hedefinden, kabul kriterlerinden veya önceki mimari kararlardan sapması durumunu  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** Context drift, ajanın uzun süren veya çok adımlı görevlerde asıl hedeften uzaklaşarak gereksiz ya da çelişkili değişiklikler üretmeye başlamasıdır.
 
 ---
@@ -655,12 +655,12 @@ Bir ajan üzerinde çalıştığı PR'da context drift yaşamış ve issue'da is
 
 Ajanı doğru yola sokmak için uygulanması gereken en doğru yöntem nedir?
 
-A) Ajanın hafızasını tazelemek için tüm repoyu silip baştan klonlamak  
-B) Ajanı "Source of Truth" olan ana Issue ve PR kabul kriterlerine yeniden çıpalamak (re-anchor), gerekirse PR açıklamasını netleştirip alakasız commit'leri geri almak  
+A) Ajanı "Source of Truth" olan ana Issue ve PR kabul kriterlerine yeniden çıpalamak (re-anchor), gerekirse PR açıklamasını netleştirip alakasız commit'leri geri almak  
+B) Ajanın hafızasını tazelemek için tüm repoyu silip baştan klonlamak  
 C) Ajanı bekletmeden PR'ı mevcut haliyle onaylayıp birleştirmek  
 D) Runner'a daha fazla RAM vermek  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Context drift düzeltilirken ajan oturumdaki sohbet geçmişine değil, asıl kaynak olan Issue ve PR kabul kriterlerine yeniden çıpalanır (re-anchor to source of truth).
 
 ---
@@ -670,10 +670,10 @@ GitHub Actions tarafından üretilen iş akışı logları ve yüklenen artifact
 
 A) 7 gün  
 B) 30 gün  
-C) 90 gün  
-D) 365 gün  
+C) 365 gün  
+D) 90 gün  
 
-> **Doğru Cevap:** **C**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** GitHub Actions varsayılan olarak log ve artifact'ları 90 gün saklar ve süre dolduğunda otomatik olarak kalıcı olarak siler.
 
 ---
@@ -685,10 +685,10 @@ GitHub politikalarına göre özel bir depoda artifact saklama süresi en fazla 
 
 A) 90 gün  
 B) 180 gün  
-C) 400 gün  
-D) Sınırsız (unlimited)  
+C) Sınırsız (unlimited)  
+D) 400 gün  
 
-> **Doğru Cevap:** **C**  
+> **Doğru Cevap:** **D**  
 > **Açıklama:** Public repolarda saklama süresi 1-90 gün arasındayken, private depolarda bu süre 400 güne kadar yapılandırılabilir.
 
 ---
@@ -728,12 +728,12 @@ Bir geliştirici, ajanla çalışmaya VS Code IDE ortamında başlamış, ardın
 
 Farklı ortamlar arasında durum sürekliliğini (continuity) sağlayan ve kayıpları önleyen temel unsur nedir?
 
-A) Geliştiricinin chat geçmişini kopyalayıp metin belgesine yapıştırması  
-B) Tüm araçların ortak bir durum çapası (state anchor) olarak aynı Pull Request numarasına, branch adına ve commit SHA değerlerine dayanması  
+A) Tüm araçların ortak bir durum çapası (state anchor) olarak aynı Pull Request numarasına, branch adına ve commit SHA değerlerine dayanması  
+B) Geliştiricinin chat geçmişini kopyalayıp metin belgesine yapıştırması  
 C) Geliştiricinin bilgisayarını hiç kapatmaması  
 D) Her ortam geçişinde ajanın tüm kodu sıfırdan yazması  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** Süreklilik, geçici oturum verilerinin taşınmasıyla değil; PR numarası, dal adı, commit SHA gibi kalıcı GitHub referanslarına dayanarak sağlanır.
 
 ---
@@ -759,11 +759,11 @@ Geliştiricilerden biri, Copilot CLI ajanını kullanarak son 10 commit'i özetl
 En düşük yetki ilkesine uygun doğru CLI komutu hangisidir?
 
 A) `copilot -p "Summarize commits" --allow-all-tools`  
-B) `copilot -p "Summarize the last 10 commits and highlight breaking changes." --allow-tool 'shell(git)'`  
-C) `copilot -p "Summarize commits" --sudo`  
+B) `copilot -p "Summarize commits" --sudo`  
+C) `copilot -p "Summarize the last 10 commits and highlight breaking changes." --allow-tool 'shell(git)'`  
 D) `copilot -p "Summarize commits" --write-to-main`  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** Yalnızca salt-okunur git incelemesi yapılması gerektiğinde `--allow-tool 'shell(git)'` parametresi ile ajanın yetki alanı sadece git komutlarıyla sınırlandırılır.
 
 ---
@@ -799,12 +799,12 @@ Aşağıdaki `.github/hooks/guardrails.json` kuralını inceleyiniz:
 
 Ajan terminalde `sudo apt-get install jq` komutunu çalıştırmayı denediğinde ne gerçekleşir?
 
-A) Komut arka planda sessizce çalıştırılır.  
-B) Hook komut içerisindeki `sudo` ifadesini yakalar, yürütülmesini engeller (`permissionDecision: deny`) ve hata üreterek insana eskalasyon tetikler.  
+A) Hook komut içerisindeki `sudo` ifadesini yakalar, yürütülmesini engeller (`permissionDecision: deny`) ve hata üreterek insana eskalasyon tetikler.  
+B) Komut arka planda sessizce çalıştırılır.  
 C) Bilgisayar kendini yeniden başlatır.  
 D) Kural yalnızca uyarı logu basar fakat komutun çalışmasına izin verir.  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** `preToolUse` hook kuralları eşleşme olduğunda eylemi çalıştırmadan önce engeller. Bu sayede modelin kararından bağımsız teknik bir bariyer oluşturulur.
 
 ---
@@ -812,12 +812,12 @@ D) Kural yalnızca uyarı logu basar fakat komutun çalışmasına izin verir.
 ### Soru 48 (Tek Seçim - Yönetişim Rutinleri / Governance Cadence)
 Ajanik sistemlerin operasyonel yönetişim döngüsünde (Governance Cadence), **"GITHUB_TOKEN izinlerinin ve ortam bazlı gizli anahtar (secrets) kapsamlarının gözden geçirilmesi"** hangi periyotta yapılması önerilen bir kontroldür?
 
-A) Günlük (Daily)  
+A) Aylık (Monthly)  
 B) Haftalık (Weekly)  
-C) Aylık (Monthly)  
+C) Günlük (Daily)  
 D) Yılda bir (Annually)  
 
-> **Doğru Cevap:** **C**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** GH-600 standartlarına göre:
 > - Haftalık (Weekly): Başarısız çalıştırmalar ve politika ihlalleri.
 > - Aylık (Monthly): Workflow izinleri ve secrets kapsamları.
@@ -829,11 +829,11 @@ D) Yılda bir (Annually)
 Geliştiricilerin, ajanlar tarafından açılan PR'larda testlerin yeşil olduğunu gördükten sonra değişikliklerin içeriğini, kapsamını ve güvenlik etkilerini okumadan doğrudan "Approve" butonuna basarak birleştirmesi hangi yönetimsel arızayı (anti-pattern) ifade eder?
 
 A) Unbounded autonomy  
-B) Rubber-stamping (Körlemesine Onaylama)  
-C) Missing audit trail  
+B) Missing audit trail  
+C) Rubber-stamping (Körlemesine Onaylama)  
 D) Bypass paths exist  
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **C**  
 > **Açıklama:** "Rubber-stamping", incelemecilerin otomasyona aşırı güvenerek veya yorularak (governance fatigue) kontrol etmeden onay vermesidir. Bunu engellemek için PR boyutları küçük tutulmalı ve kanıtlar net sunulmalıdır.
 
 ---
@@ -846,10 +846,6 @@ Bir iş akışı iki işten oluşmaktadır:
 En düşük yetki (least privilege) prensibine göre bu iş akışının izinleri (permissions) nasıl yapılandırılmalıdır?
 
 A)
-```yaml
-permissions: write-all
-```
-B)
 ```yaml
 permissions:
   contents: read
@@ -865,6 +861,10 @@ jobs:
       issues: write
     steps: [...]
 ```
+B)
+```yaml
+permissions: write-all
+```
 C)
 ```yaml
 permissions: none
@@ -875,7 +875,7 @@ permissions:
   issues: write
 ```
 
-> **Doğru Cevap:** **B**  
+> **Doğru Cevap:** **A**  
 > **Açıklama:** İş akışı düzeyinde varsayılan olarak en kısıtlı izin (`contents: read`) tanımlanmalı, yazma yetkisi (`issues: write`) yalnızca yazma işlemini yapacak olan `publish_alert` işine (job-level) verilmelidir. Bu sayede `audit_repo` işinin kaza veya enjeksiyon anında issue veya koda yazması engellenir.
 
 ---

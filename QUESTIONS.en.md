@@ -10,11 +10,11 @@ A software engineering team is adopting GitHub Copilot across their repositories
 Which of the following scenarios best demonstrates an AI system acting as an **agent** within GitHub?
 
 A) Generating code snippet completions in the IDE chat window based on developer comments  
-B) Inspecting a security vulnerability alert, creating a dedicated branch, updating the dependency manifest, and opening a Pull Request accompanied by validation evidence  
+B) Summarizing the diff of an existing pull request for a reviewer  
 C) Explaining a terminal build failure message and linking to external API documentation  
-D) Summarizing the diff of an existing pull request for a reviewer  
+D) Inspecting a security vulnerability alert, creating a dedicated branch, updating the dependency manifest, and opening a Pull Request accompanied by validation evidence  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** Assistants are reactive—they provide suggestions, explanations, or code snippets but require a human to apply them manually to the repository. Agents are goal-driven—they interpret a goal, decide on intermediate steps, use platform tools (APIs/workflows), and produce durable repository artifacts (branches, commits, and pull requests).
 
 ---
@@ -40,11 +40,11 @@ An agent opens a Pull Request with an automated dependency fix. All CI test chec
 Under the GitHub agentic governance and contributor model, who holds the ultimate accountability for this incident?
 
 A) The third-party LLM foundation model vendor  
-B) The human engineering team that defined the task, established permissions, configured governance controls, and approved/merged the pull request  
-C) The GitHub Actions virtual runner hosting the workflow  
+B) The GitHub Actions virtual runner hosting the workflow  
+C) The human engineering team that defined the task, established permissions, configured governance controls, and approved/merged the pull request  
 D) The GitHub App bot identity that generated the commit  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** Responsibility does not move with execution. While agents perform implementation tasks, human teams remain fully accountable for task definitions, permission scopes, merge policies, and production outcomes.
 
 ---
@@ -55,11 +55,11 @@ A code reviewer inspects a Pull Request opened by an AI agent. The PR contains a
 Which anti-pattern does this scenario illustrate?
 
 A) Blind trust in automation  
-B) Planless execution  
+B) Over-permissioned agent  
 C) Context drift  
-D) Over-permissioned agent  
+D) Planless execution  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** "Planless execution" occurs when an agent begins modifying repository code without first generating and presenting a structured, inspectable plan outlining intent, scope, and validation criteria.
 
 ---
@@ -69,10 +69,10 @@ According to the Contributor Model, how should engineering teams review pull req
 
 A) Automatically reject or treat them with extreme suspicion because they were written by an AI  
 B) Auto-merge them without human inspection as long as automated CI status checks pass  
-C) Evaluate them using the same engineering standards applied to human contributors, verifying scope, plan alignment, passing checks, CODEOWNERS approval, and repository policies  
-D) Defer all agent PRs to a bi-weekly architecture board review  
+C) Defer all agent PRs to a bi-weekly architecture board review  
+D) Evaluate them using the same engineering standards applied to human contributors, verifying scope, plan alignment, passing checks, CODEOWNERS approval, and repository policies  
 
-> **Correct Answer:** **C**  
+> **Correct Answer:** **D**  
 > **Explanation:** The Contributor Model prevents both excessive suspicion ("reject because AI wrote it") and excessive trust ("merge blindly because CI passed"). It enforces standard repository "Definition of Done" criteria regardless of whether the author is human or synthetic.
 
 ---
@@ -99,11 +99,11 @@ You need to ensure that any pull request modifying files under `/.github/workflo
 Which GitHub-native mechanism most directly enforces this requirement?
 
 A) GitHub Issue labels  
-B) A `CODEOWNERS` file combined with a repository ruleset requiring review from Code Owners  
-C) A warning notice written in the repository `README.md`  
+B) A warning notice written in the repository `README.md`  
+C) A `CODEOWNERS` file combined with a repository ruleset requiring review from Code Owners  
 D) Adding `continue-on-error: true` to workflow steps  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** `CODEOWNERS` maps file paths to specific individuals or teams. When combined with repository rulesets or branch protection rules enforcing "Require review from Code Owners", GitHub blocks merging until the designated team approves.
 
 ---
@@ -112,11 +112,11 @@ D) Adding `continue-on-error: true` to workflow steps
 Which statement best describes GitHub's role as a "System of Record" in an agentic development workflow?
 
 A) It compiles source code using maximum cloud compute power.  
-B) It captures and durably stores the artifacts through which agent work is proposed, discussed, validated, and decided—including branches, commits, PR timelines, issue context, and workflow run artifacts.  
+B) It stores plaintext third-party API credentials in an unencrypted cache.  
 C) It automatically rewrites incorrect code without relying on AI models.  
-D) It stores plaintext third-party API credentials in an unencrypted cache.  
+D) It captures and durably stores the artifacts through which agent work is proposed, discussed, validated, and decided—including branches, commits, PR timelines, issue context, and workflow run artifacts.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** GitHub acts as the System of Record because it durably persists the complete lineage of development activity: goals (Issues), intent (Plans), changes (Commits/Branches), decisions (PR reviews), and evidence (Workflow runs/artifacts).
 
 ---
@@ -127,11 +127,11 @@ A security engineering team creates an automated dependency remediation agent. T
 Under this architectural boundary, when is the agent's scoped responsibility considered complete?
 
 A) When it updates the package and forces a push directly to the `main` branch  
-B) When it creates a dedicated branch, updates the dependency and lockfile, and opens a Pull Request containing a structured plan and expected verification signals  
+B) When it deploys the updated container image to the production Kubernetes cluster  
 C) When it approves and merges its own Pull Request  
-D) When it deploys the updated container image to the production Kubernetes cluster  
+D) When it creates a dedicated branch, updates the dependency and lockfile, and opens a Pull Request containing a structured plan and expected verification signals  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** Implementation-scoped agents create branches, modify files, and submit PRs. Validation is performed by automated CI checks, while acceptance and deployment are governed by human reviewers and repository policies.
 
 ---
@@ -142,11 +142,11 @@ An enterprise team managing high-security banking APIs implements a "Plan-first 
 How does this workflow operate in practice?
 
 A) The agent writes all code, opens a PR, and deploys immediately to staging.  
-B) The agent opens a pull request containing only the proposed plan with zero code changes; human reviewers discuss and approve the plan in the PR before the agent begins generating code commits.  
-C) The agent commits directly to the default branch and posts a summary in a chat channel.  
+B) The agent commits directly to the default branch and posts a summary in a chat channel.  
+C) The agent opens a pull request containing only the proposed plan with zero code changes; human reviewers discuss and approve the plan in the PR before the agent begins generating code commits.  
 D) Developers write the plan manually, and the agent only runs linters.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** In a Plan-First PR workflow, planning is completed and validated by human reviewers before any code is generated. This minimizes early risk and eliminates unnecessary code reviews in sensitive environments.
 
 ---
@@ -156,12 +156,12 @@ You want to technically guarantee that an agent cannot submit a pull request wit
 
 How should you enforce this as a technical control?
 
-A) Add an HTML comment in `.github/pull_request_template.md` asking the agent to be careful.  
+A) Create a GitHub Actions workflow that verifies the existence of the plan artifact and configure it as a **Required Status Check** in repository rulesets or branch protection.  
 B) Send an email notification to repository maintainers.  
-C) Create a GitHub Actions workflow that verifies the existence of the plan artifact and configure it as a **Required Status Check** in repository rulesets or branch protection.  
+C) Add an HTML comment in `.github/pull_request_template.md` asking the agent to be careful.  
 D) Add the agent's bot account name to the `CODEOWNERS` file.  
 
-> **Correct Answer:** **C**  
+> **Correct Answer:** **A**  
 > **Explanation:** Templates only provide suggestions. To turn a process expectation into an unbypassable technical guarantee, create a validation workflow (Plan Gate) and enforce it as a Required Status Check via branch protection or rulesets.
 
 ---
@@ -172,11 +172,11 @@ In a multi-job GitHub Actions workflow, the `plan` job produces a structured JSO
 Which GitHub Actions mechanism should you use to share structured data across jobs?
 
 A) Linux step-level environment variables  
-B) Writing the output to `$GITHUB_OUTPUT` in the upstream step, declaring it in the job-level `outputs:` block, and referencing `needs.<job_id>.outputs.<output_name>` in the dependent job  
-C) Committing the output directly to the repository's `README.md` file  
+B) Committing the output directly to the repository's `README.md` file  
+C) Writing the output to `$GITHUB_OUTPUT` in the upstream step, declaring it in the job-level `outputs:` block, and referencing `needs.<job_id>.outputs.<output_name>` in the dependent job  
 D) Posting the output as a comment via the GitHub Issues REST API  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** Job outputs are explicit workflow contracts. Steps write to `$GITHUB_OUTPUT`, the job exposes the output via `outputs:`, and downstream jobs declare `needs:` to reference `${{ needs.<job_id>.outputs.<output_name> }}`.
 
 ---
@@ -204,12 +204,12 @@ When this workflow is triggered manually via `workflow_dispatch`, the `Comment o
 
 Which job-level defensive gate should you add to resolve this issue?
 
-A) `if: github.event_name == 'pull_request'`  
+A) `permissions: contents: none`  
 B) `continue-on-error: true`  
 C) `branches-ignore: [main]`  
-D) `permissions: contents: none`  
+D) `if: github.event_name == 'pull_request'`  
 
-> **Correct Answer:** **A**  
+> **Correct Answer:** **D**  
 > **Explanation:** Defensive gating uses job-level conditions (`if: github.event_name == 'pull_request'`) to ensure that PR-dependent operations run only when triggered by an actual pull request event.
 
 ---
@@ -220,11 +220,11 @@ A remediation agent is tasked with upgrading a vulnerable dependency. The agent 
 Which agent design principle was violated?
 
 A) The principle of least privilege  
-B) Success criteria must reflect genuine intent (e.g., vulnerability resolved) rather than superficial signals (e.g., unit tests compiled/passed)  
-C) Branch isolation  
+B) Branch isolation  
+C) Success criteria must reflect genuine intent (e.g., vulnerability resolved) rather than superficial signals (e.g., unit tests compiled/passed)  
 D) Workflow-level concurrency limits  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** "CI passed" is necessary but not always sufficient. Success criteria must validate that the underlying problem was solved (e.g., security alert resolved in dependency graph), rather than relying solely on passing unit tests.
 
 ---
@@ -233,11 +233,11 @@ D) Workflow-level concurrency limits
 What is the primary function of a `preToolUse` hook defined in `.github/hooks/` for GitHub Copilot agents?
 
 A) Displaying a progress banner after a tool finishes execution  
-B) Inspecting a requested tool execution or shell command before it runs and deterministically blocking or approving it based on security policy rules  
+B) Rotating repository secrets  
 C) Automatically terminating the GitHub Actions runner instance  
-D) Rotating repository secrets  
+D) Inspecting a requested tool execution or shell command before it runs and deterministically blocking or approving it based on security policy rules  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** `preToolUse` hooks execute custom validation logic before an agent invokes a tool or command, allowing security teams to enforce hard boundaries (e.g., blocking `sudo` or destructive commands) independent of the model's reasoning.
 
 ---
@@ -245,12 +245,12 @@ D) Rotating repository secrets
 ### Question 16 (Single Choice - GitHub Workflow Contexts)
 In a GitHub Actions workflow, which context should you inspect to determine runtime event metadata, such as the event that triggered the run and the target Git reference?
 
-A) `vars.*`  
+A) `github.*`  
 B) `env.*`  
-C) `github.*`  
+C) `vars.*`  
 D) `secrets.*`  
 
-> **Correct Answer:** **C**  
+> **Correct Answer:** **A**  
 > **Explanation:** The `github.*` context contains workflow execution metadata (e.g., `github.event_name`, `github.ref`, `github.actor`). `vars.*` is for non-sensitive configuration, `env.*` for environment variables, and `secrets.*` for encrypted credentials.
 
 ---
@@ -287,11 +287,11 @@ D) An encrypted database engine for storing repository secrets
 An enterprise is hosting an internal custom MCP Registry. To ensure full compatibility with GitHub Copilot tools discovery according to the **MCP Registry v0.1 specification**, which HTTPS GET endpoint must the registry expose?
 
 A) `GET /api/v2/tools/all`  
-B) `GET /v0.1/servers`  
+B) `GET /copilot/license/check`  
 C) `GET /mcp/download/binary`  
-D) `GET /copilot/license/check`  
+D) `GET /v0.1/servers`  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** Under the MCP Registry v0.1 specification, the required server catalog discovery endpoint is `GET /v0.1/servers` (along with version-specific endpoints for individual servers).
 
 ---
@@ -302,11 +302,11 @@ An organization configures **Azure API Center** to serve as a managed MCP Regist
 When entering the Azure API Center URL into the enterprise Copilot policy settings, which rule must be followed?
 
 A) The URL must include the full path `/v0.1/servers`.  
-B) Enter the base URL only (omit `/v0.1/servers`) and ensure anonymous access is enabled on the Azure API Center endpoint.  
-C) The connection must use the SSH protocol.  
+B) The connection must use the SSH protocol.  
+C) Enter the base URL only (omit `/v0.1/servers`) and ensure anonymous access is enabled on the Azure API Center endpoint.  
 D) Copilot CLI must be completely disabled across the enterprise.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** When integrating Azure API Center as an MCP registry, enter the base URL only (without appending `/v0.1/servers`) and configure anonymous access so Copilot can query the catalog without authentication barriers.
 
 ---
@@ -329,12 +329,12 @@ D) Local MCP servers are strictly prohibited under all circumstances in GitHub C
 ### Question 22 (Single Choice - GitHub Agentic Workflows Architecture)
 How are **GitHub Agentic Workflows (`gh-aw`)** structured?
 
-A) As compiled C# binaries stored in `.github/workflows/`  
-B) As Markdown files containing YAML frontmatter (defining triggers, least-privilege permissions, tools, and safe-outputs) and a Markdown body (expressing task intent in natural language), which compile into an Actions lock file  
+A) As Markdown files containing YAML frontmatter (defining triggers, least-privilege permissions, tools, and safe-outputs) and a Markdown body (expressing task intent in natural language), which compile into an Actions lock file  
+B) As compiled C# binaries stored in `.github/workflows/`  
 C) As standard Jenkins groovy pipelines  
 D) As shell scripts that bypass GitHub Actions runners  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** GitHub Agentic Workflows combine frontmatter guardrails (permissions, triggers, safe outputs, tool definitions) with natural-language Markdown instructions. This intent is compiled into an Actions lock file executed by GitHub Actions runners.
 
 ---
@@ -342,12 +342,12 @@ D) As shell scripts that bypass GitHub Actions runners
 ### Question 23 (Single Choice - Safe Outputs in Agentic Workflows)
 In GitHub Agentic Workflows, what is the primary security purpose of the **safe-outputs** mechanism?
 
-A) It ensures that the agent cannot directly perform write operations on the repository; instead, the agent proposes structured outputs, which are validated and applied by a separate, permission-gated step.  
-B) It exports database backups to an external disk.  
+A) It exports database backups to an external disk.  
+B) It ensures that the agent cannot directly perform write operations on the repository; instead, the agent proposes structured outputs, which are validated and applied by a separate, permission-gated step.  
 C) It captures screenshots of the developer's desktop during agent execution.  
 D) It deletes runner environment variables upon workflow completion.  
 
-> **Correct Answer:** **A**  
+> **Correct Answer:** **B**  
 > **Explanation:** Safe-outputs decouple reasoning from execution. The coding agent operates with read-only permissions to generate a structured proposal; a subsequent, isolated workflow step with specific write permissions verifies and executes the action.
 
 ---
@@ -368,12 +368,12 @@ tools:
 
 Which statement is true regarding this custom agent?
 
-A) The agent can automatically create branches and merge pull requests.  
-B) The agent is scoped to inspect only JavaScript files and files under `src/auth/`, and can only use read-only search/read tools; branch creation and PR behavior are determined by the surrounding execution system.  
+A) The agent is scoped to inspect only JavaScript files and files under `src/auth/`, and can only use read-only search/read tools; branch creation and PR behavior are determined by the surrounding execution system.  
+B) The agent can automatically create branches and merge pull requests.  
 C) The agent has permission to delete any file in the repository.  
 D) `applyTo` dictates the virtual machine operating system used by the runner.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** Custom agents define target file paths (`applyTo`) and permitted capabilities (`tools`). However, they do not dictate branch creation or PR policies; those boundaries are governed by the orchestrating workflow or platform control plane.
 
 ---
@@ -414,17 +414,17 @@ You are writing a GitHub Actions workflow step that runs Copilot CLI to summariz
 
 Which configuration correctly invokes the CLI non-interactively and passes authentication?
 
-A) `run: copilot chat`  
-B)
+A)
 ```yaml
 env:
   COPILOT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 run: npx @github/copilot-cli -p "Summarize recent changes" --no-ask-user
 ```
+B) `run: copilot chat`  
 C) `run: git push origin main --force`  
 D) `run: ssh agent@copilot-server`  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** Running Copilot CLI in automated CI workflows requires passing the token via `COPILOT_GITHUB_TOKEN` and supplying the `--no-ask-user` flag to suppress interactive terminal prompts.
 
 ---
@@ -434,12 +434,12 @@ A repository utilizes both a Dependency Update Agent and a Code Refactoring Agen
 
 What is the most effective architectural practice to prevent these agents from generating conflicting, overlapping pull requests?
 
-A) Grant both agents administrative write access across the entire repository.  
-B) Establish strict scope boundaries by path: restrict the Dependency Agent to dependency manifests and lockfiles, and restrict the Refactoring Agent to `src/` while prohibiting it from editing lockfiles or workflows.  
+A) Establish strict scope boundaries by path: restrict the Dependency Agent to dependency manifests and lockfiles, and restrict the Refactoring Agent to `src/` while prohibiting it from editing lockfiles or workflows.  
+B) Grant both agents administrative write access across the entire repository.  
 C) Force both agents to commit to the same working branch sequentially.  
 D) Disable pull request reviews and status checks.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** Defining clear scope boundaries by file path and artifact type prevents agents from colliding on the same files. Isolating responsibilities ensures clean, non-overlapping pull requests.
 
 ---
@@ -489,13 +489,13 @@ concurrency:
 B)
 ```yaml
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: global
   cancel-in-progress: true
 ```
 C)
 ```yaml
 concurrency:
-  group: global
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 ```
 D)
@@ -504,7 +504,7 @@ concurrency:
   group: ${{ github.actor }}
 ```
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** Scoping concurrency with `group: ${{ github.workflow }}-${{ github.ref }}` isolates concurrency per workflow and per branch. If only `${{ github.ref }}` is used, it creates a branch-wide lock that blocks unrelated workflows. `cancel-in-progress: true` terminates obsolete runs.
 
 ---
@@ -530,11 +530,11 @@ Two independent coding agents open competing pull requests to address the same s
 Under GH-600 operational reliability rules, what should the system do next?
 
 A) Continue automated rebasing indefinitely until one PR succeeds.  
-B) Automatically merge whichever PR was opened first and delete the second PR.  
-C) Halt automated retries and escalate to human review with a structured summary detailing what conflicted, what was attempted, and the available resolution options.  
+B) Halt automated retries and escalate to human review with a structured summary detailing what conflicted, what was attempted, and the available resolution options.  
+C) Automatically merge whichever PR was opened first and delete the second PR.  
 D) Permanently delete the repository branch protection rules.  
 
-> **Correct Answer:** **C**  
+> **Correct Answer:** **B**  
 > **Explanation:** A core operational rule in multi-agent orchestration is the escalation threshold: if a PR conflicts or fails with the same error signature twice (2 times), automated iteration stops and the issue escalates to human engineers with diagnostic context. "First merge wins" is an anti-pattern.
 
 ---
@@ -547,18 +547,18 @@ Which frontmatter snippet correctly configures this delegation?
 A)
 ```yaml
 ---
-agents: [implementer]
-handoffs:
-  - label: Start Implementation
-    agent: implementer
-    send: true
+tools: [implementer]
+auto-run: true
 ---
 ```
 B)
 ```yaml
 ---
-tools: [implementer]
-auto-run: true
+agents: [implementer]
+handoffs:
+  - label: Start Implementation
+    agent: implementer
+    send: true
 ---
 ```
 C)
@@ -574,7 +574,7 @@ forward-to: implementer.exe
 ---
 ```
 
-> **Correct Answer:** **A**  
+> **Correct Answer:** **B**  
 > **Explanation:** Agent chaining uses `agents:` to declare allowed subagents and `handoffs:` to define transition rules, targets, and automatic prompt dispatch (`send: true`).
 
 ---
@@ -600,11 +600,11 @@ A repository enforces a ruleset requiring all commits pushed to any branch to be
 How should a repository administrator resolve this issue while maintaining the commit signing requirement for human developers?
 
 A) Delete the commit signing ruleset completely.  
-B) In the repository's Ruleset settings, add "GitHub Copilot" as a **Bypass Actor** for that ruleset on automation branches.  
+B) Allow the agent to push directly to the `main` branch.  
 C) Generate a spoofed GPG signature inside the agent workflow.  
-D) Allow the agent to push directly to the `main` branch.  
+D) In the repository's Ruleset settings, add "GitHub Copilot" as a **Bypass Actor** for that ruleset on automation branches.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** Repository rulesets allow administrators to designate specific Bypass Actors (such as "GitHub Copilot"). This permits automation tools to push unsigned commits on designated branches while continuing to enforce signature policies on human contributors.
 
 ---
@@ -629,12 +629,12 @@ Agent architectures utilize Short-Term, Long-Term, and External Memory.
 
 Which memory layer serves as the **durable Source of Truth** for task requirements, acceptance criteria, and progress tracking in GitHub workflows?
 
-A) Short-Term Memory: Ephemeral chat prompts and active session token caches  
-B) External Memory: Persistent GitHub artifacts such as Issues, Pull Requests, and repository instructions  
+A) External Memory: Persistent GitHub artifacts such as Issues, Pull Requests, and repository instructions  
+B) Short-Term Memory: Ephemeral chat prompts and active session token caches  
 C) Long-Term Memory: Ephemeral web browser cookies  
 D) External Memory: Volatile runner terminal console output  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** External memory consists of durable repository objects (Issues for requirements, PRs for progress/decisions, workflow artifacts for evidence). It persists across sessions and environments and serves as the single source of truth.
 
 ---
@@ -643,11 +643,11 @@ D) External Memory: Volatile runner terminal console output
 In agentic software development, what does the term **Context Drift** signify?
 
 A) A network failure disconnecting an active runner instance  
-B) The gradual divergence of an agent's incremental actions and code changes away from the original task objective, acceptance criteria, or prior architectural decisions  
+B) An agent switching programming languages without updating compiler dependencies  
 C) The automatic deletion of Actions logs after 90 days  
-D) An agent switching programming languages without updating compiler dependencies  
+D) The gradual divergence of an agent's incremental actions and code changes away from the original task objective, acceptance criteria, or prior architectural decisions  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **D**  
 > **Explanation:** Context drift occurs when an agent takes intermediate steps that lose alignment with the original goal, introduce unrelated file modifications, or violate previously established constraints.
 
 ---
@@ -657,12 +657,12 @@ An agent assigned to resolve an issue begins modifying unrelated configuration f
 
 What is the recommended method to correct this context drift?
 
-A) Delete the entire git repository and re-clone it.  
-B) Re-anchor the agent to the primary Source of Truth (the Issue requirements and PR acceptance criteria), discard out-of-scope commits, and update the PR description.  
+A) Re-anchor the agent to the primary Source of Truth (the Issue requirements and PR acceptance criteria), discard out-of-scope commits, and update the PR description.  
+B) Delete the entire git repository and re-clone it.  
 C) Immediately merge the PR to avoid wasting compute minutes.  
 D) Upgrade the virtual runner's CPU allocation.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** Remediating context drift requires re-anchoring the agent to the authoritative source of truth (the Issue and PR specifications). Out-of-scope changes must be reverted and the boundaries re-clarified.
 
 ---
@@ -672,10 +672,10 @@ What is the default retention period for GitHub Actions workflow logs and upload
 
 A) 7 days  
 B) 30 days  
-C) 90 days  
-D) 365 days  
+C) 365 days  
+D) 90 days  
 
-> **Correct Answer:** **C**  
+> **Correct Answer:** **D**  
 > **Explanation:** By default, GitHub Actions retains workflow logs and uploaded artifacts for 90 days before automatically and permanently purging them.
 
 ---
@@ -687,10 +687,10 @@ What is the maximum retention period that can be configured for GitHub Actions a
 
 A) 90 days  
 B) 180 days  
-C) 400 days  
-D) Unlimited  
+C) Unlimited  
+D) 400 days  
 
-> **Correct Answer:** **C**  
+> **Correct Answer:** **D**  
 > **Explanation:** Public repositories support retention periods between 1 and 90 days. For private repositories, organizations can extend artifact and log retention up to a maximum of 400 days.
 
 ---
@@ -730,12 +730,12 @@ A software engineer initiates a refactoring task with an agent in VS Code, conti
 
 What enables state continuity across these heterogeneous environments without losing context?
 
-A) Copying and pasting raw prompt strings between terminal windows  
-B) Anchoring all environments to shared, durable GitHub references—including the Pull Request number, branch name, commit SHAs, and check runs  
+A) Anchoring all environments to shared, durable GitHub references—including the Pull Request number, branch name, commit SHAs, and check runs  
+B) Copying and pasting raw prompt strings between terminal windows  
 C) Keeping the local workstation running continuously  
 D) Forcing the agent to re-analyze the full codebase from scratch at each step  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** Continuity across tools and environments is maintained by referencing durable GitHub primitives (PR numbers, branch names, commit SHAs) as the shared state anchor, rather than copying fragile in-memory session caches.
 
 ---
@@ -761,11 +761,11 @@ A developer uses GitHub Copilot CLI to inspect the last 10 commits and summarize
 Which command adheres to least privilege?
 
 A) `copilot -p "Summarize commits" --allow-all-tools`  
-B) `copilot -p "Summarize the last 10 commits and highlight breaking changes." --allow-tool 'shell(git)'`  
-C) `copilot -p "Summarize commits" --sudo`  
+B) `copilot -p "Summarize commits" --sudo`  
+C) `copilot -p "Summarize the last 10 commits and highlight breaking changes." --allow-tool 'shell(git)'`  
 D) `copilot -p "Summarize commits" --write-to-main`  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** Using `--allow-tool 'shell(git)'` restricts the CLI agent's execution capability strictly to Git inspection commands, denying write tools, file edits, and arbitrary shell execution.
 
 ---
@@ -801,12 +801,12 @@ Examine the following `.github/hooks/guardrails.json` configuration:
 
 What occurs when an agent attempts to execute `sudo apt-get install jq` in the terminal?
 
-A) The command executes with root privileges silently.  
-B) The `preToolUse` hook intercepts the command, detects the `sudo` pattern, enforces `permissionDecision: deny`, halts execution, and reports a policy error.  
+A) The `preToolUse` hook intercepts the command, detects the `sudo` pattern, enforces `permissionDecision: deny`, halts execution, and reports a policy error.  
+B) The command executes with root privileges silently.  
 C) The host machine immediately reboots.  
 D) A warning banner is displayed, but the command runs anyway.  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** `preToolUse` hooks evaluate commands before execution. When a rule matches with `"permissionDecision": "deny"`, execution is blocked deterministically before any system damage can occur.
 
 ---
@@ -814,12 +814,12 @@ D) A warning banner is displayed, but the command runs anyway.
 ### Question 48 (Single Choice - Operational Governance Cadence)
 In a healthy agentic governance lifecycle, what is the recommended cadence for **auditing `GITHUB_TOKEN` permissions, secret scopes, and environment access boundaries**?
 
-A) Daily  
+A) Monthly  
 B) Weekly  
-C) Monthly  
+C) Daily  
 D) Annually  
 
-> **Correct Answer:** **C**  
+> **Correct Answer:** **A**  
 > **Explanation:** According to the GH-600 governance cadence:
 > - **Weekly:** Review failed runs, policy violations, and flaky checks.
 > - **Monthly:** Review workflow permissions (`GITHUB_TOKEN`) and secret scopes.
@@ -833,11 +833,11 @@ Maintainers in a fast-paced team approve agent-created pull requests without rev
 Which governance anti-pattern does this practice illustrate?
 
 A) Unbounded autonomy  
-B) Rubber-stamping  
-C) Missing audit trail  
+B) Missing audit trail  
+C) Rubber-stamping  
 D) Bypass paths exist  
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **C**  
 > **Explanation:** "Rubber-stamping" occurs when reviewers succumb to governance fatigue or misplaced trust, approving automated PRs without scrutinizing plan alignment, code structure, or side effects.
 
 ---
@@ -850,10 +850,6 @@ A repository workflow consists of two jobs:
 Which configuration follows the principle of least privilege?
 
 A)
-```yaml
-permissions: write-all
-```
-B)
 ```yaml
 permissions:
   contents: read
@@ -869,6 +865,10 @@ jobs:
       issues: write
     steps: [...]
 ```
+B)
+```yaml
+permissions: write-all
+```
 C)
 ```yaml
 permissions: none
@@ -879,7 +879,7 @@ permissions:
   issues: write
 ```
 
-> **Correct Answer:** **B**  
+> **Correct Answer:** **A**  
 > **Explanation:** The workflow defines a conservative read-only default (`contents: read`) at the root level. Write permissions (`issues: write`) are elevated strictly for the single job (`publish_alert`) that performs the write operation. This prevents `audit_repo` from possessing unneeded write capabilities.
 
 ---
